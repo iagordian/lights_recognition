@@ -4,7 +4,7 @@ import os
 import json
 import base64
 
-from app.files_navigation import join_absolute_path
+from app.files_navigation import join_absolute_path, join_file_path
 
 
 module_dir = 'ML_tests'
@@ -28,8 +28,9 @@ video_context = {
     6: 'Дневное освещение',
 }
 
-datapackege_url = 'authomatic_upload/datapackages/video_demo.json'
-datapackege_url = join_absolute_path(datapackege_url)
+datapackege_dir = 'authomatic_upload/datapackages/'
+datapackege_dir = join_absolute_path(datapackege_dir)
+datapackege_url = join_file_path(datapackege_dir, 'video_demo.json')
 
 extensions = ['mp4', 'webm']
 
@@ -59,7 +60,10 @@ def save_videos_to_json():
 
         file_content['context'] = video_context[i]
         tests_video_base64_strings[i] = file_content
-        
+
+
+    if not os.path.exists(datapackege_dir):
+        os.mkdir(datapackege_dir)
 
     with open(datapackege_url, 'w') as file:
         json.dump(tests_video_base64_strings, file, ensure_ascii=False, indent=4)

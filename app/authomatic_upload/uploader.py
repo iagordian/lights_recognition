@@ -5,7 +5,7 @@ import os
 from typing import Dict, Callable
 from tqdm import tqdm
 
-from app.files_navigation import join_absolute_path
+from app.files_navigation import join_absolute_path, check_exsist
 
 
 class Uploader:
@@ -74,7 +74,7 @@ class Uploader:
             with open(self.log_error_file_path, 'w') as file:
                 json.dump(self.errors, file, ensure_ascii=False, indent=3)
 
-        elif os.path.exists(self.log_error_file_path):
+        elif check_exsist(self.log_error_file_path):
             os.remove(self.log_error_file_path)
 
     def print_message(self):

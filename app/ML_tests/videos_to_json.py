@@ -4,7 +4,7 @@ import os
 import json
 import base64
 
-from app.files_navigation import join_absolute_path, join_file_path
+from app.files_navigation import join_absolute_path, join_file_path, create_dir
 
 
 module_dir = 'ML_tests'
@@ -60,9 +60,7 @@ def save_videos_to_json():
         file_content['context'] = video_context[i]
         tests_video_base64_strings[i] = file_content
 
-
-    if not os.path.exists(datapackege_dir):
-        os.mkdir(datapackege_dir)
+    create_dir(datapackege_dir)
 
     with open(datapackege_url, 'w') as file:
         json.dump(tests_video_base64_strings, file, ensure_ascii=False, indent=4)

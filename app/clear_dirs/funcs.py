@@ -2,7 +2,8 @@
 
 import os
 
-from app.files_navigation import join_absolute_path, join_file_path
+from app.files_navigation import join_absolute_path, join_file_path, \
+    check_exsist
 
 def clear_dir(dir_to_clear_path: str):
 
@@ -11,7 +12,7 @@ def clear_dir(dir_to_clear_path: str):
 
 def clear_dir_body(dir_path):
 
-    if os.path.exists(dir_path):
+    if check_exsist(dir_path):
 
         list_dir = os.listdir(dir_path)
 

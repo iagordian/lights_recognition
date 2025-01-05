@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 from app.dataloaders import ImageToLearn
-from app.files_navigation import join_absolute_path
+from app.files_navigation import join_absolute_path, join_file_path
 from app.random_state import fix_random_state
 from app.config import RANDOM_SEED
 from app.manage import Preproccessor
@@ -32,7 +32,7 @@ zip_files_paths = {
 
 def generate_photo_name(images_dir: str):
     filename = f'{uuid.uuid4()}.png'
-    return os.path.join(images_dir, filename)
+    return join_file_path(images_dir, filename)
 
 def unpack_archives():
 
@@ -52,7 +52,7 @@ def unpack_archives():
                 img = Image.open(file_content)
                 img = np.asarray(img)
 
-                file_path = os.path.join(images_dir, file_name)
+                file_path = join_file_path(images_dir, file_name)
                 cv2.imwrite(file_path, img)
 
                 
@@ -70,7 +70,7 @@ def get_sample_list() -> List[ImageToLearn]:
         files = os.listdir(folder_file_path)
 
         for file_name in tqdm(files, desc=class_name, total=len(files)):
-            file_path = os.path.join(folder_file_path, file_name)
+            file_path = join_file_path(folder_file_path, file_name)
 
             images.append(
                 ImageToLearn(

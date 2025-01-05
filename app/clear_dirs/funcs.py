@@ -2,7 +2,7 @@
 
 import os
 
-from app.files_navigation import join_absolute_path
+from app.files_navigation import join_absolute_path, join_file_path
 
 def clear_dir(dir_to_clear_path: str):
 
@@ -17,7 +17,7 @@ def clear_dir_body(dir_path):
 
         for file_name in list_dir:
 
-            path = os.path.join(dir_path, file_name)
+            path = join_file_path(dir_path, file_name)
 
             if os.path.isdir(path):
                 clear_dir_body(path)

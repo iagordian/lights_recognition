@@ -6,7 +6,7 @@ from PIL import Image
 import cv2
 
 from app.ML_module import LightsRecognator
-from app.files_navigation import join_absolute_path
+from app.files_navigation import join_absolute_path, join_file_path
 from app.manage import open_video_from_file, frames_iterator
 
 module_dir = 'ML_tests'
@@ -49,8 +49,8 @@ def run_tests():
         if not os.path.exists(test_output_dir):
 
             os.mkdir(test_output_dir)
-            on_dir = os.path.join(test_output_dir, 'on/')
-            off_dir = os.path.join(test_output_dir, 'off/')
+            on_dir = join_file_path(test_output_dir, 'on/')
+            off_dir = join_file_path(test_output_dir, 'off/')
             os.mkdir(on_dir)
             os.mkdir(off_dir)
         
@@ -62,7 +62,7 @@ def run_tests():
             image_class_dir = output_classes[image_class]
 
             file_name = f'{i}.png'
-            file_path_full = os.path.join(test_output_dir, image_class_dir, file_name)
+            file_path_full = join_file_path(test_output_dir, image_class_dir, file_name)
 
             cv2.imwrite(file_path_full, frame)
 

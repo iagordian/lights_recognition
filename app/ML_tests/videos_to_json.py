@@ -49,8 +49,7 @@ def save_videos_to_json():
         for extension in extensions:
 
             file_name = video_label + f'.{extension}'
-            file_path = os.path.join(module_dir, videos_dir, file_name)
-            file_path_full = join_absolute_path(file_path)
+            file_path_full = join_absolute_path(module_dir, videos_dir, file_name)
 
             video_file = open(file_path_full, 'rb')
             video_file_read = video_file.read()

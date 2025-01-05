@@ -3,7 +3,6 @@ run_app:
 	poetry run python3 -m scripts.kill_port
 	poetry run uvicorn app.api:app --reload --port=5000 --reload-include="*.html" --reload-include="*.css" --reload-include="*.js"
 	
-
 recreate_db:
 	poetry run python3 -m scripts.recreate_db
 

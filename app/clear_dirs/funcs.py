@@ -11,14 +11,16 @@ def clear_dir(dir_to_clear_path: str):
 
 def clear_dir_body(dir_path):
 
-    list_dir = os.listdir(dir_path)
+    if os.path.exists(dir_path):
 
-    for file_name in list_dir:
+        list_dir = os.listdir(dir_path)
 
-        path = os.path.join(dir_path, file_name)
+        for file_name in list_dir:
 
-        if os.path.isdir(path):
-            clear_dir_body(path)
+            path = os.path.join(dir_path, file_name)
 
-        else:
-            os.remove(path)
+            if os.path.isdir(path):
+                clear_dir_body(path)
+
+            else:
+                os.remove(path)

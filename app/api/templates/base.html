@@ -1,0 +1,65 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>Lights Recognition</title>
+
+    <link rel="stylesheet" href="{{url_for('static', path='CSS/index.css')}}">
+    
+    <script src="{{url_for('static', path='/scripts/jquery-3.6.4.min.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/ajaxJSON.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/bootstrap.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/bootstrap.bundle.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/manage.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/video_tracking.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/events.js')}}"> </script>
+
+    
+</head>
+
+<body>
+    
+    <div id="main">
+    
+        <div id="standart_buttons_section" class="side_section">
+
+            {% for number, description in demo_video_descriptions %}
+                <button dem_num="{{number}}" class="start_denostration_btn {% if number == actual_demo_num %} active_btn {% endif %}">
+                    Демонстрация {{number}} ({{description}})
+                </button>
+            {% endfor %}
+
+        </div>
+
+
+        
+        <div id="add_files_section" class="side_section">
+
+            <canvas id="canvas" class="non_display"></canvas>
+            
+        </div>
+        
+        <div id="video_section">
+
+            <div id="video_player_area">
+                <video id="video_player" controls autoplay muted class="active standart_demo" >
+                    {% include "video_sourse.html" %}
+                </video>
+            </div>    
+
+            
+
+        </div>
+
+        
+        
+    </div>
+    
+</body>
+
+
+</html>

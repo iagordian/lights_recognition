@@ -1,0 +1,111 @@
+
+
+body {
+    margin: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    max-height: 100%;
+    font-size: 1.4vh;
+}
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    background: #fff5ee;
+}
+
+    
+#standart_buttons_section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+#add_files_section {
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-left: 3px solid black;
+}
+
+.side_section {
+    background-color: #7c766e;
+    min-height: 100%;
+    width: 30vw;
+}
+
+.start_denostration_btn {
+    cursor: pointer;
+    background: #F5D7BF;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1.4vh;
+    width: 15vw;
+}
+
+.start_denostration_btn:hover{
+    background: #E39250;
+}
+
+.start_denostration_btn:active {
+    background: radial-gradient(#E39250, #e59c61, #E39250);
+}
+
+.active_btn {
+    background-color: #e59c61;
+}
+
+#video_section {
+    margin-top: 5vh;
+    text-align: center;
+}
+
+#video_player_area {
+    width: 470px;
+    height: 830px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+#video_player {
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.non_display {
+    display: none;
+}
+
+.light_on{
+    border: 7px solid LimeGreen;
+}
+
+.light_off{
+    border: 7px solid red;
+}

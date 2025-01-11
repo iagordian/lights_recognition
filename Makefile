@@ -35,3 +35,6 @@ test_actual_model:
 
 clear_tests_outputs:
 	poetry run python3 -m scripts.clear_tests_outputs
+
+clear_pycache_files:
+	poetry run python3 -m scripts.clear_pycache_files

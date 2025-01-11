@@ -2,7 +2,11 @@
 
 from app.database import Model, engine
 from app.authomatic_upload import Uploader, upload_demo_videos
+from app.files_navigation import create_dir, join_absolute_path
 
+file_path = 'database/file'
+file_path = join_absolute_path(file_path)
+create_dir(file_path)
 
 Model.metadata.drop_all(engine, checkfirst=True)
 Model.metadata.create_all(engine)

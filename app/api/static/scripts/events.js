@@ -9,6 +9,10 @@ var main = (function () {
         $('#video_player').on('play', record_start_video)
         $('#video_player').on('pause', record_stop_video)
         $('#video_player').on('ended', record_stop_video)
+        $('#add_file_zone').on('click', chouse_file)
+        $('#file_form').on('change', take_file)
+
+        
 
         start_tracking()
 

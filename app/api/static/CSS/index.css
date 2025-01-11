@@ -25,7 +25,7 @@ body {
 
     
 #standart_buttons_section {
-    position: fixed;
+    
     top: 0;
     left: 0;
     border-right: 3px solid black;
@@ -37,16 +37,20 @@ body {
 
 
 #add_files_section {
-    position: fixed;
     top: 0;
     right: 0;
-    border-left: 3px solid black;
+    border-left: 3px solid black;    
 }
 
 .side_section {
     background-color: #7c766e;
     min-height: 100%;
     width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
 }
 
 .start_denostration_btn {
@@ -108,4 +112,40 @@ body {
 
 .light_off{
     border: 7px solid red;
+}
+
+#add_file_zone{
+    height: 830px;
+    width: 85%;
+    border: 3px solid black;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    cursor: pointer;
+    background: #fff5ee;
+}
+
+#add_file_label_zone{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+#add_file_label{
+    margin-bottom: 50px;
+    font-size: 14px;
+    text-decoration-line: overline;
+    cursor: pointer;
+}
+
+#add_file_zone:active {
+    background: radial-gradient(#E39250, #e59c61, #E39250);
+}
+
+.img{
+    width: 5.5vw;
+    height: 5.5vw;
 }

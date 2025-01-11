@@ -10,7 +10,7 @@ function start_demonstration() {
 
     demo_video_num = $(this).attr('dem_num')
 
-    $('.start_denostration_btn').removeClass('active_btn')
+    all_btns_unactive()
     $(this).addClass('active_btn')
 
     var header = {
@@ -30,11 +30,15 @@ function start_demonstration() {
     
 }
 
+function all_btns_unactive() {
+    $('.start_denostration_btn').removeClass('active_btn')
+}
+
 function replace_video_source(data) {
 
     $('#video_player').empty()
     $('#video_player').append(data)
-    $("#video_player")[0].load()
+    $("#video_player").get(0).load()
     
 }
 

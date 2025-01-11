@@ -16,6 +16,7 @@
     <script src="{{url_for('static', path='/scripts/bootstrap.bundle.js')}}"> </script>
     <script src="{{url_for('static', path='/scripts/manage.js')}}"> </script>
     <script src="{{url_for('static', path='/scripts/video_tracking.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/file_manage.js')}}"> </script>
     <script src="{{url_for('static', path='/scripts/events.js')}}"> </script>
 
     
@@ -39,18 +40,35 @@
         
         <div id="add_files_section" class="side_section">
 
-            <canvas id="canvas" class="non_display"></canvas>
+            <input type="file" class="non_display" id="file_form">
+
+            <div id="add_file_zone">
+
+                <div></div>
+
+                <div id="file_label_img_zone">
+                    <img id="file_label" class="img" src="{{url_for('static', path='/images/file_label.png')}}">
+                    <img id="file_input_label" class="img non_display" src="{{url_for('static', path='/images/arrow.png')}}">
+                    <img id="error_label" class="img non_display" src="{{url_for('static', path='/images/err.png')}}">
+                </div>
+                   
+                <div id="add_file_label_zone">
+                    <p id="add_file_label">Добавить файл mp4 или webm (щелчок или перетаскивание)</p>
+                </div>
+
+            </div>
             
         </div>
         
         <div id="video_section">
-
+            
             <div id="video_player_area">
                 <video id="video_player" controls autoplay muted class="active standart_demo" >
                     {% include "video_sourse.html" %}
                 </video>
             </div>    
-
+            
+            <canvas id="canvas" class="non_display"></canvas>
             
 
         </div>

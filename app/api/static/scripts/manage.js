@@ -7,18 +7,17 @@ function start_demonstration() {
     }
 
     record_stop_video()
+    clear_video_player_sourses()
+    clear_video_classes()
 
-    demo_video_num = $(this).attr('dem_num')
+    url = $(this).attr('data-url')
 
     all_btns_unactive()
     $(this).addClass('active_btn')
 
     var header = {
-        'url': '/get_demo_video',
-        'type': 'get',
-        'data': {
-            demo_video_num: demo_video_num
-        }
+        'url': url,
+        'type': 'get'
     }
     AjaxQuery.info(header, function(data) {
 
@@ -36,10 +35,18 @@ function all_btns_unactive() {
 
 function replace_video_source(data) {
 
-    $('#video_player').empty()
-    $('#video_player').append(data)
+    clear_video_player_sourses()
+    append_video_sourse(data)
     $("#video_player").get(0).load()
     
+}
+
+function clear_video_player_sourses() {
+    $('#video_player').empty()
+}
+
+function append_video_sourse(data) {
+    $('#video_player').append(data)
 }
 
 function start_video() {

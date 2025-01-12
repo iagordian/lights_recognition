@@ -28,8 +28,9 @@
     
         <div id="standart_buttons_section" class="side_section">
 
-            {% for number, description in demo_video_descriptions %}
-                <button dem_num="{{number}}" class="start_denostration_btn {% if number == actual_demo_num %} active_btn {% endif %}">
+            {% for number, description in demo_video_descriptions.items() %}
+                <button dem_num="{{number}}" class="start_denostration_btn {% if number == actual_demo_num %} active_btn {% endif %}"
+                data-url="{{demo_video_url_dict[number]}}">
                     Демонстрация {{number}} ({{description}})
                 </button>
             {% endfor %}

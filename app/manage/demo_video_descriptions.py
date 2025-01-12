@@ -5,7 +5,7 @@ from app.models import DemoVideo
 from sqlalchemy.orm import Session
 
 @db_select
-def demo_video_descriptions(db: Session):
+def get_demo_video_descriptions(db: Session):
 
-    for number, context in db.query(DemoVideo.number, DemoVideo.context).order_by(DemoVideo.number):
-        yield number, context.lower()
+    return {number: context.lower() for number, context in db.query(DemoVideo.number, DemoVideo.context).order_by(DemoVideo.number)}
+        

@@ -1,5 +1,5 @@
 
-const socket = new WebSocket('ws://45.89.188.149:80/analize_frame');
+const socket = new WebSocket('ws://45.89.188.16:80/analize_frame');
 
 socket.addEventListener('open', (event) => {
     start_video()

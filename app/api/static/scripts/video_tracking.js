@@ -1,42 +1,31 @@
 
+const socket = new WebSocket('ws://45.89.188.149:80/analize_frame');
 
+socket.addEventListener('open', (event) => {
+    start_video()
+    start_tracking()
+})
 
-function start_tracking() {
-
-    setInterval(video_tracking, 500)
-
+socket.onmessage = (event) => {
+    switch_video_class(event.data)
 }
 
+function start_tracking() {
+    setInterval(video_tracking, 500)
+}
 
 function video_tracking() {
-
     if (is_video_active()) {
-
         send_frame()
-
     } 
 }
 
-function send_frame() {
-    
+function send_frame() {    
     var frame = get_frame_base64()
-    
-    var header = {
-        'url': '/analize_frame',
-        'type': 'post',
-        'contentType': "application/json; charset=utf-8",
-        'data': JSON.stringify({
-            'frame_base64': frame
-        })
+    if (frame == '') {
+        return    
     }
-    AjaxQuery.info(header, function(data) {
-
-        
-        class_num = data['class_num']
-        switch_video_class(class_num)
-
-    })
-
+    socket.send(frame)
 }
 
 
@@ -62,5 +51,12 @@ function switch_video_class (class_num) {
 }
 
 function get_actual_video_class_num() {
-    return Number($('#video_player').attr('class_num'))
+    var class_num = $('#video_player').attr('class_num')
+
+    if (class_num == undefined) {
+        return 3
+    }
+
+    return Number(class_num)
 }
+

@@ -22,6 +22,8 @@ function take_file() {
 function read_file(file, file_type) {
     clear_video_player_sourses()
     clear_video_classes()
+    remove_class_num()
+    
     var reader = new FileReader();
     reader.onload = () => start_video_play(reader.result, file_type);
     reader.readAsDataURL(file);

@@ -9,6 +9,7 @@ function start_demonstration() {
     record_stop_video()
     clear_video_player_sourses()
     clear_video_classes()
+    remove_class_num()
 
     url = $(this).attr('data-url')
 
@@ -56,6 +57,10 @@ function start_video() {
     
 }
 
+function remove_class_num() {
+    $('#video_player').removeAttr('class_num')
+}
+
 function is_video_active() {
     return $('#video_player').hasClass('active')
 }
@@ -88,7 +93,8 @@ function get_frame_base64() {
         .getContext("2d")
         .drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 
-    var frame = canvas.toDataURL().replace('data:image/png;base64,', '')
+    var frame = canvas.toDataURL()
+    var frame = frame.replace('data:', '').replace(',', '').replace('image/png;base64', '')
     
     return frame
 

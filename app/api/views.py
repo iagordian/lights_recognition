@@ -6,9 +6,9 @@ from app.manage import get_demo_video_content, get_demo_video_descriptions, \
     open_frame_from_base64
 from app.ML_module import LightsRecognator
 
-from fastapi import Request
+from fastapi import Request, WebSocket
 from fastapi.responses import JSONResponse
-
+from starlette.websockets import WebSocketDisconnect
 
 @app.get('/')
 async def index(request: Request):
@@ -26,7 +26,7 @@ async def index(request: Request):
                                                    })
 
 
-@app.get('/get_demo_video/{demo_video_num}')
+@app.get('/get_demo_video/{demo_video_num:int}')
 async def get_demo_video(request: Request, demo_video_num: int):
 
     demo_video_src = get_demo_video_content(demo_video_num)
@@ -35,14 +35,23 @@ async def get_demo_video(request: Request, demo_video_num: int):
                                                             'demo_video_src': demo_video_src})
 
 
-@app.post('/analize_frame')
-async def analize_frame(frame_data: VideoFrame):
-    
-    actual_frame = open_frame_from_base64(frame_data.frame_base64)
+@app.websocket('/analize_frame')
+async def analize_frame(websocket: WebSocket):
 
+    await websocket.accept()
     recognator = LightsRecognator()
-    class_num = recognator.get_class(actual_frame)
 
-    return JSONResponse({
-        'class_num': class_num
-    })
+    try:
+
+        while True:
+
+            frame_base64 = await websocket.receive_text()
+            actual_frame = open_frame_from_base64(frame_base64)
+            
+            class_num = recognator.get_class(actual_frame)
+            
+            await websocket.send_text(str(class_num))
+
+    except WebSocketDisconnect:
+        pass
+    

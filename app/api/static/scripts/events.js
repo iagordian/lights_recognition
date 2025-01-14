@@ -12,10 +12,6 @@ var main = (function () {
         $('#add_file_zone').on('click', chouse_file)
         $('#file_form').on('change', take_file)
 
-        
-
-        start_tracking()
-
     }
 
    // Инициализация приложения

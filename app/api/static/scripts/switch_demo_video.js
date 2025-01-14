@@ -6,10 +6,11 @@ function load_demo() {
 
     $('.btn').each(function() {
         
+        var demo_video_num = $(this).attr('dem_num')
+        var demo_video_ind = get_demo_video_ind(demo_video_num)
+        
         if (!$(this).hasClass('active_btn')) {
             
-            var demo_video_num = $(this).attr('dem_num')
-            var demo_video_ind = get_demo_video_ind(demo_video_num)
             var get_demo_video_url = $(this).attr('data-url')
             var btn = $(this)
 
@@ -28,6 +29,8 @@ function load_demo() {
             })
             
 
+        } else {
+            demo_videos[demo_video_ind] = $('#video_player').html()
         }
 
     });

@@ -1,13 +1,11 @@
 
 from .app import app, templates
-from .schemas import VideoFrame
 from .api_manage import get_demo_video_url_dict
 from app.manage import get_demo_video_content, get_demo_video_descriptions, \
     open_frame_from_base64
 from app.ML_module import LightsRecognator
 
 from fastapi import Request, WebSocket
-from fastapi.responses import JSONResponse
 from starlette.websockets import WebSocketDisconnect
 
 @app.get('/')

@@ -54,9 +54,26 @@ function get_actual_video_class_num() {
     var class_num = $('#video_player').attr('class_num')
 
     if (class_num == undefined) {
-        return 3
+        return undefined
     }
 
     return Number(class_num)
 }
 
+function get_frame_base64() {
+
+    var canvas = document.getElementById("canvas");
+    var video = document.getElementById("video_player");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    canvas
+        .getContext("2d")
+        .drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+
+    var frame = canvas.toDataURL()
+    var frame = frame.replace('data:', '').replace(',', '').replace('image/png;base64', '')
+    
+    return frame
+
+}

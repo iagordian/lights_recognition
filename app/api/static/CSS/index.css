@@ -53,14 +53,18 @@ body {
     position: fixed;
 }
 
-.start_denostration_btn {
-    cursor: pointer;
-    background: #F5D7BF;
-    padding: 10px 20px;
+.btn{
+    padding: 12px 23px;
     border: 1px solid black;
     border-radius: 10px;
-    font-size: 1.4vh;
-    width: 15vw;
+    font-size: 1.6vh;
+    width: 18vw;
+    cursor: not-allowed;
+}
+
+.start_denostration_btn {
+    cursor: pointer !important;
+    background: #F5D7BF;
 }
 
 .start_denostration_btn:hover{

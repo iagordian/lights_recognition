@@ -17,6 +17,7 @@
     <script src="{{url_for('static', path='/scripts/manage.js')}}"> </script>
     <script src="{{url_for('static', path='/scripts/video_tracking.js')}}"> </script>
     <script src="{{url_for('static', path='/scripts/file_manage.js')}}"> </script>
+    <script src="{{url_for('static', path='/scripts/switch_demo_video.js')}}"> </script>
     <script src="{{url_for('static', path='/scripts/events.js')}}"> </script>
 
     
@@ -29,9 +30,13 @@
         <div id="standart_buttons_section" class="side_section">
 
             {% for number, description in demo_video_descriptions.items() %}
-                <button dem_num="{{number}}" class="start_denostration_btn {% if number == actual_demo_num %} active_btn {% endif %}"
-                data-url="{{demo_video_url_dict[number]}}">
-                    Демонстрация {{number}} ({{description}})
+                <button dem_num="{{number}}" class="btn {% if number == actual_demo_num %} active_btn start_denostration_btn {% endif %}"
+                data-url="{{demo_video_url_dict[number]}}" text="Демонстрация {{number}} ({{description}})">
+                    {% if number == actual_demo_num %}
+                        Демонстрация {{number}} ({{description}})
+                    {% else %}
+                        * Демонстрационное видео загружается *
+                    {% endif %}
                 </button>
             {% endfor %}
 
